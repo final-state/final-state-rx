@@ -9,10 +9,7 @@ readFile('./README.md', (err1, buf1) => {
   }
   const text = buf1
     .toString()
-    .replace(
-      /final-state-logger@\d+\.\d+\.\d+/g,
-      `final-state-logger@${version}`,
-    );
+    .replace(/final-state-rx@\d+\.\d+\.\d+/g, `final-state-rx@${version}`);
 
   writeFile('./README.md', text, err2 => {
     if (err2) {
