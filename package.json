@@ -33,7 +33,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.11.0",
-    "final-state": "^0.2.8",
+    "final-state": "^0.3.0",
     "immer": "^3.1.2",
     "jest": "^24.7.1",
     "prettier": "^1.17.1",
@@ -41,7 +41,7 @@
     "typescript": "^3.4.4"
   },
   "peerDependencies": {
-    "final-state": "^0.2.8",
+    "final-state": "^0.3.0",
     "rxjs": "^6.0.0"
   },
   "files": [
