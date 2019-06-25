@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/final-state/final-state-rx.svg?branch=master)](https://travis-ci.com/final-state/final-state-rx)
-[![codecov.io](https://codecov.io/gh/final-state/final-state-rx/branch/master/graph/badge.svg)](https://codecov.io/gh/final-state/final-state-rx)
+[![codecov.io](https://codecov.io/gh/final-state/final-state-rx/branch/next/graph/badge.svg)](https://codecov.io/gh/final-state/final-state-rx)
 [![Known Vulnerabilities](https://snyk.io/test/github/final-state/final-state-rx/badge.svg)](https://snyk.io/test/github/final-state/final-state-rx)
-[![minified + gzip](https://badgen.net/bundlephobia/minzip/final-state-rx@0.2.0)](https://bundlephobia.com/result?p=final-state-rx@0.2.0)
+[![minified + gzip](https://badgen.net/bundlephobia/minzip/@liyuanqiu/final-state-rx@0.2.0)](https://bundlephobia.com/result?p=@liyuanqiu/final-state-rx@0.2.0)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 # final-state-rx
@@ -11,6 +11,7 @@
 ## Installation
 
 ```bash
+yarn add final-state
 yarn add final-state-rx
 ```
 
@@ -21,7 +22,8 @@ You should care about the `peer dependencies` of this package. If something not 
 ## Basic Example
 
 ```javascript
-import applyRxHandler from 'final-state-rx';
+import { createStore } from 'final-state';
+import { applyRxHandler } from 'final-state-rx';
 import { Observable } from 'rxjs';
 
 interface State {
@@ -50,7 +52,7 @@ const actions: ActionMap = {
   },
 };
 
-const store = new Store(initialState, actions, 'example-store');
+const store = createStore(initialState, actions, 'example-store');
 
 applyRxHandler(store);
 

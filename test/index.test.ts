@@ -1,7 +1,7 @@
 /* eslint no-param-reassign:0 */
-import Store, { ActionMap } from 'final-state';
+import { createStore, ActionMap } from '@liyuanqiu/final-state';
 import { Observable } from 'rxjs';
-import applyRxHandler from '.';
+import { applyRxHandler } from '../src';
 
 function sleep(time: number) {
   return new Promise(resolve => setTimeout(resolve, time));
@@ -62,7 +62,7 @@ const actions: ActionMap = {
 };
 
 test('rx action should work properly', async () => {
-  const store = new Store(initialState, actions, 'final-state-rx-test-1');
+  const store = createStore(initialState, actions, 'final-state-rx-test-1');
   applyRxHandler(store);
   expect(store.getState().count).toBe(0);
   store.dispatch('increaseCountByNEvery200msRepeat5Times', 2);
@@ -80,7 +80,7 @@ test('rx action should work properly', async () => {
 });
 
 test('rx action complete works', async () => {
-  const store = new Store(initialState, actions, 'final-state-rx-test-2');
+  const store = createStore(initialState, actions, 'final-state-rx-test-2');
   applyRxHandler(store);
   expect(store.getState().count).toBe(0);
   const complete = store.dispatch('increaseCountEvery200msRepeat5Times');
@@ -89,7 +89,7 @@ test('rx action complete works', async () => {
 });
 
 test('bad next value will throw an exception', async () => {
-  const store = new Store(initialState, actions, 'final-state-rx-test-3');
+  const store = createStore(initialState, actions, 'final-state-rx-test-3');
   applyRxHandler(store);
   try {
     await store.dispatch('badNextValue');

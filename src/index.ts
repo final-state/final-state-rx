@@ -1,12 +1,13 @@
 /* eslint @typescript-eslint/no-explicit-any:0 */
-import Store, { PluginAction } from 'final-state';
+import { Store, PluginAction } from '@liyuanqiu/final-state';
 import { Observable } from 'rxjs';
 
 type NextValue = [string, any] | string;
 
 type RxAction = (params: any) => Observable<NextValue>;
 
-export default (store: Store) => {
+// eslint-disable-next-line import/prefer-default-export
+export const applyRxHandler = (store: Store) => {
   store.registerActionHandler(
     'rx',
     (pluginAction: PluginAction<RxAction>, params: any) =>
