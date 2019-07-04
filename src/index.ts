@@ -1,5 +1,5 @@
 /* eslint @typescript-eslint/no-explicit-any:0 */
-import { Store, PluginAction } from '@liyuanqiu/final-state';
+import { Store, PluginAction } from 'final-state';
 import { Observable } from 'rxjs';
 
 type NextValue = [string, any] | string;

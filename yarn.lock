@@ -800,11 +800,6 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
-"@liyuanqiu/final-state@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@liyuanqiu/final-state/-/final-state-1.0.7.tgz#1b437b9be39d01b16d83db09ae8a5e2f9a8c4053"
-  integrity sha512-qTLlXvQoA0L0clBhhs6BdQ2jhlloQ07hHfcpocZA2tltwRQVvTt5jlW+88Yo2rUzDyjsdGCeQ6tu7LHQG6vMrw==
-
 "@types/babel__core@^7.1.0":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
@@ -2695,6 +2690,11 @@ fill-range@^4.0.0:
     is-number "^3.0.0"
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
+
+final-state@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/final-state/-/final-state-1.1.0.tgz#ebc9f45a0ba2fca3a384880c67e3ecfe2900e369"
+  integrity sha512-khfnmEckmoyqBAqpTGYdPWsxp8kvBY70/DXEYVd6j1sGslpvF67GAT/HudaXq1Bx9b4VhDBiUI5J5YniBd5yeQ==
 
 find-cache-dir@^2.0.0:
   version "2.1.0"
