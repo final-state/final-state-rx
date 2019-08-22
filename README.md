@@ -92,7 +92,8 @@ actions = {
     // it's signature is:
     // type RxAction = (params: any) => Observable<NextValue>;
     // the `params` is exactly the same `params` in Store#dispatch
-    action(params) {
+    // the `getState` is a function to get the latest state in the store
+    action(params, getState) {
       return new Observable();
     },
   },
