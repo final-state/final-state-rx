@@ -9,15 +9,32 @@ function sleep(time: number) {
 
 interface State {
   count: number;
+  yaCount: number;
 }
 
 const initialState: State = {
   count: 0,
+  yaCount: 0,
 };
 
 const actions: ActionMap = {
   increaseCount(draft: State, n = 1) {
     draft.count += n;
+  },
+  setYaCount(draft: State, count: number) {
+    if (count !== undefined) {
+      draft.yaCount = count;
+    }
+  },
+  setYaCountTo2xCountIn200ms: {
+    handler: 'rx',
+    action(_params: unknown, getState: () => State) {
+      return new Observable(subscriber => {
+        setTimeout(() => {
+          subscriber.next(['setYaCount', getState().count * 2]);
+        }, 200);
+      });
+    },
   },
   increaseCountByNEvery200msRepeat5Times: {
     handler: 'rx',
@@ -86,6 +103,18 @@ test('rx action complete works', async () => {
   const complete = store.dispatch('increaseCountEvery200msRepeat5Times');
   await complete;
   expect(store.getState().count).toBe(5);
+});
+
+test('can get latest state in action', async () => {
+  const store = createStore(initialState, actions, 'final-state-rx-test-4');
+  applyRxHandler(store);
+  expect(store.getState().count).toBe(0);
+  expect(store.getState().yaCount).toBe(0);
+  store.dispatch('increaseCount', 5);
+  expect(store.getState().count).toBe(5);
+  store.dispatch('setYaCountTo2xCountIn200ms');
+  await sleep(300);
+  expect(store.getState().yaCount).toBe(10);
 });
 
 test('bad next value will throw an exception', async () => {

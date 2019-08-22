@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 type NextValue = [string, any] | string;
 
-type RxAction = (params: any) => Observable<NextValue>;
+type RxAction = (params: any, getState: () => any) => Observable<NextValue>;
 
 // eslint-disable-next-line import/prefer-default-export
 export const applyRxHandler = (store: Store) => {
@@ -12,7 +12,7 @@ export const applyRxHandler = (store: Store) => {
     'rx',
     (pluginAction: PluginAction<RxAction>, params: any) =>
       new Promise((resolve, reject) =>
-        pluginAction.action(params).subscribe({
+        pluginAction.action(params, store.getState.bind(store)).subscribe({
           next(value: NextValue) {
             if (Array.isArray(value)) {
               store.dispatch(...value);
