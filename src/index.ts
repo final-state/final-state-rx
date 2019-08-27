@@ -4,7 +4,14 @@ import { Observable } from 'rxjs';
 
 type NextValue = [string, any] | string;
 
-type RxAction = (params: any, getState: () => any) => Observable<NextValue>;
+/**
+ * @template T the type of params
+ * @template K the type of your state
+ */
+export type RxAction<T = any, K = any> = (
+  params: T,
+  getState: () => K,
+) => Observable<NextValue>;
 
 // eslint-disable-next-line import/prefer-default-export
 export const applyRxHandler = (store: Store) => {
